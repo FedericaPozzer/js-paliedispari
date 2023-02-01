@@ -30,54 +30,87 @@
 // ****************************************************************************************
 
 
-// CHIEDO ALL'UTENTE SE VUOLE PARI O DISPARI (prompt)
-let user_choice_oe = prompt("Ciao utente! Pari o Dispari? UTILIZZA LETTERE MINUSCOLE!");
-console.log(user_choice_oe);
 
-if (user_choice_oe === "pari") {
-    console.log("even")
-} else if (user_choice_oe === "dispari") {
-    console.log("odd")
+// UTENTE SCEGLIE PARI O DISPARI
+let userChoice = prompt("scrivi 'pari' oppure 'dispari'");
+console.log("Hai scelto: " + userChoice);
+
+if (userChoice != "pari" && userChoice != "dispari") {
+    userChoice = "pari";
+    console.log("Ho scelto pari per te");
+}
+
+// UTENTE SCEGLIE NUMERO 
+let userNumber = parseInt(prompt("inserisci un numero da 1 a 5"));
+console.log("Hai scelto il unumero: " + userNumber);
+console.log("Il pc ha scelto: " + generateRandomNumber(1, 5));
+
+
+// GENERO UN NUMERO RANDOM PER IL PC
+const pcNumber = generateRandomNumber(1, 5);
+
+// SOMMO I NUMERI
+let gameTotal = userNumber + pcNumber;
+
+// STABILIAMO SE LA SOMMA E' PARI
+let userWon = false;
+if(isEven(gameTotal)) {
+    if(userChoice == "pari") {
+        userWon = true;
+    }
 } else {
-    alert("La tua scelta non va bene, ricarica la pagina per riprovare!")
+    if(userChoice == "dispari") {
+        userWon = true;
+    }
 }
 
-// SE SCEGLIE ALTRO GLI DO SCELTA NON VALIDA E VIA (alert)
-// if ((user_choice_oe !== "pari") || (user_choice_oe !== "dispari")) {
-//     alert("Scelta non valida! Ricarica la pagina per riprovare!");
-// }
-
-// CHIEDO ALL'UTENTE DI INSERIRE UN NUMERO DA 1 A 5 (prompt)
-let user_choice_n = parseInt(prompt("Inserisci un numero da 1 a 5 compresi!"));
-console.log("il numero scelto dall'utente è: " + user_choice_n);
-
-// CREO UNA FUNZIONE IN CUI GENERO UN NUMERO RANDOM DA 1 A 5 COMPRESI PER IL PC (function)
-function generate_random_number() {
-    const random_number = Math.floor(Math.random() * 5) + 1;
-    
-    return random_number;
+if(userWon) {
+    console.log("Hai vinto");
+} else {
+    console.log("Ha vinto il pc!");
 }
 
-let pc_choice_n = generate_random_number();
-console.log("il numero scelto dal pc è: " + pc_choice_n);
 
-// SOMMO NUMERO UTENTE E NUMERO PC
-let sum = user_choice_n + pc_choice_n;
-console.log("la somma dei due numeri è: " + sum);
 
-// CREO UNA FUNZIONE PER CONTROLLARE SE IL NUMERO OTTENUTO è ODD OR EVEN (function)
-function odd_or_even () {
-    // CONTORLLO SE IL NUMERO OTTENUTO è ODD OR EVEN (check with the function)
-    if (sum % 2 == 0) {
-        console.log(`la somma è ${sum}, quindi pari`)
-    } else {
-        console.log(`la somma è ${sum}, quindi dispari`)
-    };
+// FUNZIONE NUMERO RANDOMICO
+
+/**
+ * funzione che genera un numero fra due valori (inclusi)
+ * 
+ * @param {int} min il valore minimo
+ * @param {int} max il valore massimo
+ * @returns {int} numero randomico generato tra min e max
+ * 
+ */
+
+// console.log("il numero del pc è: " + generateRandomNumber(1, 5));
+function generateRandomNumber(min, max) {
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    return randomNumber;
 }
 
-let result = odd_or_even();
+// FUNZIONE PARI O DISPARI
 
-// IF L'UTENTE HA SCELTO ODD E VIEN FUORI ODD ALLORA VINCE LUI..ecc (if if if if if)
+/**
+ * funzione controlla se il numero è pari
+ * 
+ * @param {int} num il valore da verificare
+ * @returns {boolean} true se è pari, false se è dispari
+ * 
+ * 
+ */
 
-// let even = "pari";
-// let odd = "dispari";
+function isEven(num) {
+    if (num % 2 == 0) {
+        return true;
+    }
+
+    return false;
+}
+// controllo se funziona! YES!
+console.log(isEven(6));
+
+// bene anche:
+    // function isEven(num) {
+        // return num % 2 == 0;
+    //}

@@ -37,3 +37,32 @@ function is_it_pal(user_word) {
 // APPLICO LA FUNZIONE E LA CONSOLE LOGGO 
 let palindrome_check = is_it_pal(user_word);
 console.log(palindrome_check);
+
+
+
+// Tiziano:
+/**
+ * isPalindrome("palindromia")
+ * 
+ * function isPalindrome(word) {
+ *  let reverseWord = "";
+ * 
+ *  for (let i = 0; i < word.length; i++) {
+ *      const currentLetter = word[i];
+ *      console.log(currentLetter);
+ * 
+ *      reverseWord = currentLetter + reverseWord; 
+ *  }
+ * 
+ *  console.log(reverseWord);
+ * 
+ *  
+ *  if(word == reverseWord) {
+ *      return true;
+ *  }
+ *  return false;
+ * OPPURE: return word == reverseWord (true --  quindi se non è così 
+ * automaticamente ritorna false!)
+ * 
+ * }
+ */
